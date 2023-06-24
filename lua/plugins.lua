@@ -111,8 +111,12 @@ return require('packer').startup(function(use)
         end
     }
 
+    use 'folke/twilight.nvim'
     use {
-        'folke/twilight.nvim'
+        'NvChad/nvim-colorizer.lua',
+        config = function()
+            require 'colorizer'.setup {}
+        end
     }
 
 end)

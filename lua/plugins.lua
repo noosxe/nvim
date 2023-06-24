@@ -111,4 +111,8 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {
+        'folke/twilight.nvim'
+    }
+
 end)

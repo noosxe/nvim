@@ -19,6 +19,7 @@ vim.o.relativenumber = true
 vim.o.showcmd = true
 vim.o.showmatch = true
 vim.o.cursorline = true
+vim.o.termguicolors = true
 -- }}} UI Config
 
 -- Colors {{{

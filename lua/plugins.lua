@@ -31,6 +31,7 @@ return require('packer').startup(function(use)
         config = function ()
             vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
             require("neo-tree").setup {
+                close_if_last_window = true,
                 filesystem = {
                     filtered_items = {
                         visible = true,
@@ -98,6 +99,10 @@ return require('packer').startup(function(use)
         config = function()
             require'bufferline'.setup {
                 options = {
+                    diagnostics = 'nvim_lsp',
+                    diagnostics_indicator = function(count)
+                        return "("..count..")"
+                    end,
                     offsets = {
                         {
                             filetype = "neo-tree",
@@ -183,6 +188,26 @@ return require('packer').startup(function(use)
                     end
                 end,
             })
+        end
+    }
+
+    use {
+        'lukas-reineke/indent-blankline.nvim',
+        config = function()
+            require("indent_blankline").setup {
+                char = "",
+                char_highlight_list = {
+                    "IndentBlanklineIndent1",
+                    "IndentBlanklineIndent2",
+                },
+                space_char_highlight_list = {
+                    "IndentBlanklineIndent1",
+                    "IndentBlanklineIndent2",
+                },
+                show_trailing_blankline_indent = false,
+                show_current_context = true,
+                show_current_context_start = true,
+            }
         end
     }
 

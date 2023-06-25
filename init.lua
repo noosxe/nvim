@@ -23,10 +23,14 @@ vim.o.termguicolors = true
 vim.diagnostic.config({
   virtual_text = false,
 })
+vim.opt.list = true
+vim.opt.listchars:append "eol:↴"
 -- }}} UI Config
 
 -- Colors {{{
 vim.cmd[[colorscheme tokyonight-night]]
+vim.cmd[[highlight IndentBlanklineIndent1 guibg=#1a1b26 gui=nocombine]]
+vim.cmd[[highlight IndentBlanklineIndent2 guibg=#16161e gui=nocombine]]
 -- }}} Colors
 
 vim.o.mouse = 'a'

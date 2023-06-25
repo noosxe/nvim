@@ -20,6 +20,7 @@ vim.api.nvim_exec(
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'folke/tokyonight.nvim'
+    use 'famiu/bufdelete.nvim'
     use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
@@ -111,6 +112,10 @@ return require('packer').startup(function(use)
                             separator = true,
                         },
                     },
+                    separator_style = "thick",
+                    close_command = function(bufnum)
+                        require('bufdelete').bufdelete(bufnum, true)
+                    end,
                 },
             }
         end
@@ -205,8 +210,6 @@ return require('packer').startup(function(use)
                     "IndentBlanklineIndent2",
                 },
                 show_trailing_blankline_indent = false,
-                show_current_context = true,
-                show_current_context_start = true,
             }
         end
     }

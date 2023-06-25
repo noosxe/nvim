@@ -132,4 +132,58 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {
+        'MunifTanjim/prettier.nvim',
+        config = function()
+            local prettier = require("prettier")
+
+            prettier.setup({
+                bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+                filetypes = {
+                    "css",
+                    "graphql",
+                    "html",
+                    "javascript",
+                    "javascriptreact",
+                    "json",
+                    "less",
+                    "markdown",
+                    "scss",
+                    "typescript",
+                    "typescriptreact",
+                    "yaml",
+                },
+            })
+        end
+    }
+
+    use {
+        'jose-elias-alvarez/null-ls.nvim',
+        requires = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+            local null_ls = require("null-ls")
+
+            local sources = { null_ls.builtins.formatting.prettier }
+
+            null_ls.setup({
+                sources,
+                on_attach = function(client, bufnr)
+                    if client.supports_method("textDocument/formatting") then
+                        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            group = augroup,
+                            buffer = bufnr,
+                            callback = function()
+                                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                                -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
+                                vim.lsp.buf.format({ async = false })
+                            end,
+                        })
+                    end
+                end,
+            })
+        end
+    }
+
 end)

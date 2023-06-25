@@ -20,6 +20,9 @@ vim.o.showcmd = true
 vim.o.showmatch = true
 vim.o.cursorline = true
 vim.o.termguicolors = true
+vim.diagnostic.config({
+  virtual_text = false,
+})
 -- }}} UI Config
 
 -- Colors {{{

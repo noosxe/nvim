@@ -4,6 +4,8 @@
 
 require("plugins")
 
+vim.cmd [[ let g:svelte_preprocessors = ['typescript'] ]]
+
 -- GENERAL SETTINGS
 
 -- Spaces & Tabs {{{
@@ -21,7 +23,7 @@ vim.o.showmatch = true
 vim.o.cursorline = true
 vim.o.termguicolors = true
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
 })
 vim.opt.list = true
 vim.opt.listchars:append "eol:↴"

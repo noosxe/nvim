@@ -208,4 +208,11 @@ return require('packer').startup(function(use)
     }
 
     use 'evanleck/vim-svelte'
+    use {
+        'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim',
+        config = function()
+            require'neogit'.setup {}
+        end
+    }
 end)

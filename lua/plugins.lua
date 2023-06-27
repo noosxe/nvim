@@ -141,7 +141,7 @@ return require('packer').startup(function(use)
             local prettier = require("prettier")
 
             prettier.setup({
-                bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+                bin = 'prettierd', -- or `'prettier'`
                 filetypes = {
                     "css",
                     "graphql",

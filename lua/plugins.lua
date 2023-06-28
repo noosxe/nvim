@@ -86,9 +86,17 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'petertriho/nvim-scrollbar',
+        config = function()
+            require'scrollbar'.setup {}
+        end
+    }
+
+    use {
         'lewis6991/gitsigns.nvim',
         config = function()
             require'gitsigns'.setup {}
+            require'scrollbar.handlers.gitsigns'.setup {}
         end
     }
 
@@ -232,4 +240,5 @@ return require('packer').startup(function(use)
             }
         end,
     }
+
 end)

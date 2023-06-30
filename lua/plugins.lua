@@ -260,4 +260,15 @@ return require('packer').startup(function(use)
         end,
     }
 
+    use {
+        "folke/trouble.nvim",
+        requires = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require"trouble".setup {
+                mode = "document_diagnostics",
+            }
+        end
+    }
 end)

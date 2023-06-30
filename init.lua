@@ -48,6 +48,11 @@ vim.o.mouse = 'a'
 vim.o.wildignorecase = true
 vim.o.wildoptions = 'fuzzy,pum,tagfile'
 
+vim.diagnostic.config {
+  virtual_text = false,
+  virtual_lines = { only_current_line = true }
+}
+
 -- }}} Behavior
 
 -- Telescope {{{

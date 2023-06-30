@@ -299,4 +299,11 @@ return require('packer').startup(function(use)
             vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
         end
     }
+
+    use {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require"lsp_lines".setup {}
+        end,
+    }
 end)

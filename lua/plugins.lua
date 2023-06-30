@@ -137,9 +137,28 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    }
+
+    use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.2',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { {'nvim-lua/plenary.nvim'} },
+        config = function()
+            require('telescope').setup {
+                extensions = {
+                    fzf = {
+                        fuzzy = true,                    -- false will only do exact matching
+                        override_generic_sorter = true,  -- override the generic sorter
+                        override_file_sorter = true,     -- override the file sorter
+                        case_mode = "smart_case",
+                    }
+                }
+            }
+
+            require('telescope').load_extension('fzf')
+        end
     }
 
     use {

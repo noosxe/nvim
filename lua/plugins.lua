@@ -238,7 +238,7 @@ return require('packer').startup(function(use)
 
     use 'evanleck/vim-svelte'
     use {
-        'TimUntersberger/neogit',
+        'NeogitOrg/neogit',
         requires = 'nvim-lua/plenary.nvim',
         config = function()
             require'neogit'.setup {}
@@ -305,5 +305,10 @@ return require('packer').startup(function(use)
         config = function()
             require"lsp_lines".setup {}
         end,
+    }
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
 end)

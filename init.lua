@@ -37,8 +37,8 @@ vim.opt.listchars:append "eol:↴"
 -- Colors {{{
 
 vim.cmd[[colorscheme tokyonight-night]]
-vim.cmd[[highlight IndentBlanklineIndent1 guibg=#1a1b26 gui=nocombine]]
-vim.cmd[[highlight IndentBlanklineIndent2 guibg=#16161e gui=nocombine]]
+vim.cmd[[highlight IndentBlanklineIndent2 guibg=#1a1b26 gui=nocombine]]
+vim.cmd[[highlight IndentBlanklineIndent1 guibg=#16161e gui=nocombine]]
 
 -- }}} Colors
 

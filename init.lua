@@ -14,6 +14,8 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
+vim.o.autoindent = true
+vim.o.smartindent = true
 
 -- }}} Spaces & Tabs
 
@@ -52,6 +54,7 @@ vim.diagnostic.config {
   virtual_text = false,
   virtual_lines = { only_current_line = true }
 }
+vim.o.clipboard = "unnamedplus"
 
 -- }}} Behavior
 

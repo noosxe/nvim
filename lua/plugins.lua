@@ -22,15 +22,12 @@ return require('packer').startup(function(use)
     use 'folke/tokyonight.nvim'
     use {
         'nvim-treesitter/nvim-treesitter',
+        tag = "v0.9.1",
         run = ':TSUpdate',
         config = function ()
             require'nvim-treesitter.configs'.setup {
                 highlight = {
                     enable = true,
-                    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-                    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-                    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-                    -- Instead of true it can also be a list of languages
                     additional_vim_regex_highlighting = false,
                 },
             }
@@ -39,16 +36,16 @@ return require('packer').startup(function(use)
     use 'famiu/bufdelete.nvim'
     use {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
+        tag = "3.6",
         requires = {
             "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
         },
         config = function ()
             vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
             require("neo-tree").setup {
-                close_if_last_window = true,
+                close_if_last_window = false,
                 filesystem = {
                     filtered_items = {
                         visible = true,
@@ -63,6 +60,7 @@ return require('packer').startup(function(use)
 
     use {
         'williamboman/mason.nvim',
+        tag = "v1.8.0",
         requires = {
             'williamboman/mason-lspconfig.nvim',
             'neovim/nvim-lspconfig',
@@ -95,13 +93,6 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'j-hui/fidget.nvim',
-        config = function()
-            require'fidget'.setup {}
-        end
-    }
-
-    use {
         'petertriho/nvim-scrollbar',
         config = function()
             require'scrollbar'.setup {}
@@ -118,7 +109,7 @@ return require('packer').startup(function(use)
 
     use {
         'akinsho/bufferline.nvim',
-        tag = "*",
+        tag = "v4.4.0",
         requires = 'nvim-tree/nvim-web-devicons',
         config = function()
             require'bufferline'.setup {
@@ -153,27 +144,22 @@ return require('packer').startup(function(use)
     }
 
     use {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-    }
-
-    use {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.2',
+        tag = '0.1.3',
         requires = { {'nvim-lua/plenary.nvim'} },
         config = function()
             require('telescope').setup {
                 extensions = {
                     fzf = {
-                        fuzzy = true,                    -- false will only do exact matching
-                        override_generic_sorter = true,  -- override the generic sorter
-                        override_file_sorter = true,     -- override the file sorter
+                        fuzzy = true,
+                        override_generic_sorter = true,
+                        override_file_sorter = true,
                         case_mode = "smart_case",
                     }
                 }
             }
 
-            require('telescope').load_extension('fzf')
+            -- require('telescope').load_extension('fzf')
         end
     }
 
@@ -239,8 +225,6 @@ return require('packer').startup(function(use)
                             group = augroup,
                             buffer = bufnr,
                             callback = function()
-                                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                                -- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
                                 vim.lsp.buf.format({ async = false })
                             end,
                         })
@@ -279,7 +263,7 @@ return require('packer').startup(function(use)
 
     use {
         "utilyre/barbecue.nvim",
-        tag = "*",
+        tag = "v1.2.0",
         requires = {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons", -- optional dependency
@@ -330,13 +314,6 @@ return require('packer').startup(function(use)
             vim.keymap.set("n", "K", require("hover").hover, {desc = "hover.nvim"})
             vim.keymap.set("n", "gK", require("hover").hover_select, {desc = "hover.nvim (select)"})
         end
-    }
-
-    use {
-        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        config = function()
-            require"lsp_lines".setup {}
-        end,
     }
 
     use {

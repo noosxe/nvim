@@ -1,5 +1,11 @@
 -- vim:foldmethod=marker:foldlevel=0
 
+function prequire(m) 
+  local ok, err = pcall(require, m) 
+  if not ok then return nil, err end
+  return err
+end
+
 -- Dependencies
 
 require("plugins")
@@ -51,7 +57,7 @@ vim.o.wildignorecase = true
 vim.o.wildoptions = 'fuzzy,pum,tagfile'
 
 vim.diagnostic.config {
-  virtual_text = false,
+  virtual_text = true,
   virtual_lines = { only_current_line = true }
 }
 vim.o.clipboard = "unnamedplus"
@@ -60,11 +66,14 @@ vim.o.clipboard = "unnamedplus"
 
 -- Telescope {{{
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local builtin = prequire('telescope.builtin')
+
+if builtin then
+    vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+end
 
 -- }}} Telescope
 
@@ -82,7 +91,11 @@ vim.keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>"
 
 -- Lualine {{{
 
-require('lualine').setup {
+local lualine = prequire('lualine')
+
+if lualine then
+
+lualine.setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
@@ -122,5 +135,5 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {'neo-tree', 'trouble'}
 }
-
+end
 -- }}} Lualine

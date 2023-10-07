@@ -3,6 +3,7 @@
 require "keymaps"
 require "options"
 require "lazy-config"
+require "telescope-config"
 require "whichkey"
 
 -- vim.cmd [[ let g:svelte_preprocessors = ['typescript'] ]]

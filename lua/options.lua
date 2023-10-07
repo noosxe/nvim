@@ -44,5 +44,8 @@ opt.wildoptions = "fuzzy,pum,tagfile"
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

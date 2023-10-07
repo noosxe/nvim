@@ -26,6 +26,15 @@ return {
         tag = "v2.4.0",
     },
     {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+    },
+    {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         config = function()
@@ -169,31 +178,6 @@ return {
     },
     {
         "norcalli/nvim-colorizer.lua",
-    },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim",
-        },
-        config = function()
-            require("neo-tree").setup {
-                close_if_last_window = true,
-                filesystem = {
-                    filtered_items = {
-                        visible = true,
-                        hide_dotfiles = false,
-                        hide_gitignored = false,
-                    },
-                    use_libuv_file_watcher = true,
-                    follow_current_file = {
-                        enabled = false,
-                    },
-                },
-            }
-        end,
     },
     {
         'VonHeikemen/lsp-zero.nvim',

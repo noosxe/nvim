@@ -256,4 +256,35 @@ return {
             vim.api.nvim_set_keymap('n', 't', "<cmd>HopPattern<CR>", { noremap = true })
         end,
     },
+    {
+        "petertriho/nvim-scrollbar",
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup {}
+            require("scrollbar.handlers.gitsigns").setup {}
+        end,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {},
+        config = function()
+            require("ibl").setup()
+        end,
+    },
+    {
+        "utilyre/barbecue.nvim",
+        tag = "v1.2.0",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require("barbecue").setup {
+                theme = 'tokyonight',
+            }
+        end,
+    }
 }

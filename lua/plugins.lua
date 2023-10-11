@@ -20,8 +20,16 @@ return {
         opts = {},
         config = function()
             require("tokyonight").setup {
-                style = "night"
+                style = "night",
+                on_highlights = function(hl, c)
+                    hl.TabLineSel = {
+                        bg = c.magenta2,
+                        fg = c.magenta2,
+                    }
+                end,
             }
+
+            vim.cmd[[colorscheme tokyonight]]
         end,
         tag = "v2.4.0",
     },
@@ -95,6 +103,12 @@ return {
         config = function()
             require("bufferline").setup {
                 options = {
+                    show_buffer_icons = false,
+                    show_buffer_close_icons = false,
+                    separator_style = {"", ""},
+                    indicator = {
+                        style = "underline",
+                    },
                     diagnostics = 'nvim_lsp',
                     diagnostics_indicator = function(count)
                         return "(" .. count .. ")"
@@ -104,21 +118,22 @@ return {
                             filetype = "neo-tree",
                             text = "File Explorer",
                             text_align = "left",
-                            separator = true,
+                            separator = false,
                         },
                     },
-                    separator_style = "thick",
                     close_command = function(bufnum)
                         require('bufdelete').bufdelete(bufnum, true)
                     end,
-                    hover = {
-                        enabled = true,
-                        delay = 150,
-                        reveal = { 'close' },
-                    },
+                    middle_mouse_command = function(bufnum)
+                        require('bufdelete').bufdelete(bufnum, true)
+                    end,
+                    right_mouse_command = function(bufnum)
+                        require('bufdelete').bufdelete(bufnum, true)
+                    end,
                 },
             }
         end,
+        tag = "v4.4.0",
     },
     {
         "nvim-lualine/lualine.nvim",
@@ -178,6 +193,9 @@ return {
     },
     {
         "norcalli/nvim-colorizer.lua",
+        config = function ()
+            require("colorizer").setup()
+        end,
     },
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -258,6 +276,9 @@ return {
     },
     {
         "petertriho/nvim-scrollbar",
+        config = function()
+            require("scrollbar").setup()
+        end,
     },
     {
         "lewis6991/gitsigns.nvim",

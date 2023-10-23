@@ -84,6 +84,7 @@ local mappings = {
     ["m"] = {"<cmd>Mason<cr>", "Mason UI for Lsp"},
     ["r"] = {"<cmd>lua vim.lsp.buf.format{async=true}<cr>", "Reformat Code"},
     ["e"] = {"<cmd>Neotree<cr>", "Explorer"},
+    ["g"] = {"<cmd>Neogit<cr>", "Neogit"},
 
     l = {
         name = "LSP",

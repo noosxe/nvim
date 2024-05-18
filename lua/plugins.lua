@@ -110,7 +110,7 @@ return {
                 }
             }
         end,
-        tag = "v4.4.0"
+        -- tag = "v4.5.3"
     }, {
         "nvim-lualine/lualine.nvim",
         dependencies = {"nvim-tree/nvim-web-devicons"},

@@ -167,8 +167,8 @@ return {
         dependencies = {
             -- LSP Support
             {"neovim/nvim-lspconfig"}, -- Required
-            {'williamboman/mason.nvim', tag = "v1.8.0"}, -- Optional
-            {'williamboman/mason-lspconfig.nvim', tag = "v1.17.1"}, -- Optional
+            {'williamboman/mason.nvim', tag = "v1.10.0"}, -- Optional
+            {'williamboman/mason-lspconfig.nvim', tag = "v1.29.0"}, -- Optional
             {'jose-elias-alvarez/null-ls.nvim'},
             {
                 'jay-babu/mason-null-ls.nvim',
